@@ -1,0 +1,83 @@
+
+    <h1>
+  Director <%=@director.id%> details
+</h1>
+
+<a href="/directors">
+  Go back
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%=@director.name%>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%=@director.dob%>
+  </dd>
+
+  <dt>
+    <%=@director.bio%>
+  </dt>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%=@director.image%>" style="width:250px;">
+  </dd>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+    <th>
+    </th>
+  </tr>
+<%Movie.where({:director_id=>@director.id}).each do |the_item|%>
+  <tr>
+    <th>
+      <%=the_item.id%>
+    </th>
+    <th>
+      <img src="<%=the_item.image%>" style="width:250px;">
+    <th>
+      <%=the_item.title%>
+    </th>
+    <th>
+      <%=the_item.year%>
+    </th>
+    <th>
+      <%=the_item.id%>
+    </th>
+    <th>
+      <a href="/movies/<%=the_item.id%>">Show details</a>
+    </th>
+  </tr>
+  <%end%>
+</table>   

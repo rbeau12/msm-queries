@@ -1,0 +1,104 @@
+    <h1>
+  Actor #<%=@actor.id%> details
+</h1>
+
+<a href="/actors">
+  Go back
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%=@actor.name%>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%=@actor.dob%>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%=@actor.bio%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%=@actor.image%>" style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    2015-08-12 17:20:11 UTC
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    2015-08-12 17:20:11 UTC
+  </dd>
+</dl>
+
+<hr>
+<h2>Filmography</h2>
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+    <th>Character</th>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+    <th>
+    </th>
+  </tr>
+<%@characters.each do |the_item|%>
+  <%movie=Movie.where({:id=>the_item.movie_id})[0]%>
+  <tr>
+    <th>
+      <%=movie.id%>
+    </th>
+    <th>
+      <%=the_item.name%>
+    <th>
+      <img src="<%=movie.image%>" style="width:250px;">
+    <th>
+      <%=movie.title%>
+    </th>
+    <th>
+      <%=movie.year%>
+    </th>
+    <th>
+      <%=Director.where({:id=>movie.director_id})[0].name%>
+    </th>
+    <th>
+      <a href="/movie/<%=movie.id%>">Show details</a>
+    </th>
+  </tr>
+  <%end%>
